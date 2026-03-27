@@ -1,30 +1,38 @@
-# Descrição
+# Description
 
-# Estrutura do banco de dados
+# Database structure
 
 ## Tables
 - categories
-- service-groups
+- service_groups
 - services
-- 
-### categories
+  
+### `categories`
 - id
 - title
 - icon(?)
 
-### service-groups
+### `service_groups`
 - id
 - title
-- category-id
-- featured-image
+- category_id
+- featured_image
 - description
-- short-description(?)
-- 
+- short_description(?)
+- url
 
-### services
+## `service_group_galleries`
+- id
+- service_group_id
+- url
+- alt
+- order
+
+### `services`
 - id
 - title
-- group-id
-- short-description
+- group_id
+- short_description
 - price
 
+### `professionals`

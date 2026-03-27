@@ -15,6 +15,17 @@ This project is a website with a catalogue, blog and CRUD system. Users can add,
 
 # Database structure
 
+## Summary
+- categories
+- service-groups
+- services
+- service-group-galleries
+- professionals
+- users
+- taxonomies(?)
+- posts
+- categories_professionals
+
 ## Tables
   
 ### `categories`
@@ -83,7 +94,7 @@ This project is a website with a catalogue, blog and CRUD system. Users can add,
 
 ## Joining tables
 
-### `professional_category`
+### `categories_professionals`
 - id
 - professional_id
 - category_id

@@ -1,4 +1,17 @@
 # Description
+This project is a website with a catalogue, blog and CRUD system. Users can add, edit or remove categories, service groups, services and blog posts according to their role.
+
+# Stack
+## Font-end
+- HTML
+- CSS
+- Tailwind(?)
+- Javascript
+
+## Back-end
+- PHP
+- Laravel(?)
+- MySQL
 
 # Database structure
 
@@ -48,11 +61,6 @@
 - image
 - **user_id**: Links professional to a user
 
-### `professional_category`
-- id
-- professional_id
-- category_id
-
 ### `taxonomies`
 - id
 - title
@@ -72,5 +80,12 @@
 - last_edited
 - category_id
 - taxonomy_id
+
+## Joining tables
+
+### `professional_category`
+- id
+- professional_id
+- category_id
 
 

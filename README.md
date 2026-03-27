@@ -6,13 +6,13 @@
 - categories
 - service-groups
 - services
-
-### ´categories´
+- 
+### categories
 - id
 - title
 - icon(?)
 
-### ´service-groups´
+### service-groups
 - id
 - title
 - category-id
@@ -21,7 +21,7 @@
 - short-description(?)
 - 
 
-### ´services´
+### services
 - id
 - title
 - group-id

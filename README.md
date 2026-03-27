@@ -2,13 +2,13 @@
 This project is a website with a catalogue, blog and CRUD system. Users can add, edit or remove categories, service groups, services and blog posts according to their role.
 
 # Stack
-## Font-end
+### Font-end
 - HTML
 - CSS
 - Tailwind(?)
 - Javascript
 
-## Back-end
+### Back-end
 - PHP
 - Laravel(?)
 - MySQL
@@ -52,7 +52,7 @@ This project is a website with a catalogue, blog and CRUD system. Users can add,
 - password
 - **role**: defines whether the user can create, edit or delete content, either service related or post related
 
-### `professional`
+### `professionals`
 - id
 - name
 - description

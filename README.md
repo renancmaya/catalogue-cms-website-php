@@ -22,9 +22,13 @@ This project is a website with a catalogue, blog and CRUD system. Users can add,
 - service-group-galleries
 - professionals
 - users
-- taxonomies(?)
+- taxonomies
+- terms
 - posts
+- emails
 - categories_professionals
+- categories_posts
+- posts_terms
 
 ## Tables
   
@@ -32,6 +36,9 @@ This project is a website with a catalogue, blog and CRUD system. Users can add,
 - id
 - title
 - icon(?)
+- created_at
+- updated_at
+
 
 ### `service_groups`
 - id
@@ -41,6 +48,9 @@ This project is a website with a catalogue, blog and CRUD system. Users can add,
 - description
 - short_description(?)
 - url
+- created_at
+- updated_at
+
 
 ### `service_group_galleries`
 - id
@@ -48,6 +58,7 @@ This project is a website with a catalogue, blog and CRUD system. Users can add,
 - url
 - alt
 - order
+- created_at
 
 ### `services`
 - id
@@ -55,6 +66,9 @@ This project is a website with a catalogue, blog and CRUD system. Users can add,
 - group_id
 - short_description
 - price
+- created_at
+- updated_at
+
 
 ### `users`
 - id
@@ -62,6 +76,8 @@ This project is a website with a catalogue, blog and CRUD system. Users can add,
 - email
 - password
 - **role**: defines whether the user can create, edit or delete content, either service related or post related
+- created_at
+
 
 ### `professionals`
 - id
@@ -70,27 +86,46 @@ This project is a website with a catalogue, blog and CRUD system. Users can add,
 - function
 - url
 - image
+- created_at
 - **user_id**: Links professional to a user
-
-### `taxonomies`
-- id
-- title
-- description
-- url
-- featured_image
-- icon(?)
 
 ### `posts`
 - id
 - title
 - url
 - content
+- excerpt
 - featured_image
-- author
-- date_created
-- last_edited
-- category_id
+- status
+- created_at
+- published_at
+- updated_at
+- professional_id
+
+### `taxonomies`
+- id
+- url
+- title
+- created_at
+- updated_at
+
+### `terms`
+- id
 - taxonomy_id
+- name
+- url
+- description
+- featured_image
+- created_at
+- updated_at
+
+### `messages`
+- id
+- sender_name
+- sender_email
+- sender_phone
+- created_at
+- message
 
 ## Joining tables
 
@@ -98,5 +133,15 @@ This project is a website with a catalogue, blog and CRUD system. Users can add,
 - id
 - professional_id
 - category_id
+
+### `categories_posts`
+- id
+- category_id
+- post_id
+ 
+### `posts_terms`
+- id
+- post_id
+- term_id
 
 

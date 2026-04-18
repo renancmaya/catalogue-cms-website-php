@@ -1,5 +1,14 @@
 # 1. Context
 
+## 1.1. Project Overview
+This document defines the Entity-Relationship and Logical data models for the Espaço Valter Cardoso CMS.
+
+## 1.2. Business Objective
+To provide a robust and dynamic back-end foundation that allows administrators to seamlessly update website content. It is designed to act as a digital showcase, highlighting the salon's authority in the beauty and aesthetics market.
+
+## 1.2. System Scope
+The architecture handles complex relationships within the beauty industry, such as linking professionals to multiple multidisciplinary specialties, categorizing services into specific groups, managing image galleries, and controlling dynamic UI elements (like list items and global options) directly from the database.
+
 # 2. Entity-Relationship Model
 
 ## 2.1. Entity
@@ -131,9 +140,8 @@
 | 2 | 1 |
 | 3 | 4 |
 
-# Data dictionary
+# 5. Physical model
 
-# Physical model
 ```sql
 /* CREATE TABLES */
 

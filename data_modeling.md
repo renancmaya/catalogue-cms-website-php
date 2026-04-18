@@ -4,96 +4,112 @@
 
 ## 2.1. Entity
 
-| Entity                | Atributes |
-| ----------            | ------------- |
-| SERVICE               | id, name, description, price | 
-| SERVICE GROUP         | id, name, description, url, featured image, gallery* |
-| SERVICE CATEGORY      | id, name, description, url |
-| PROFESSIONAL          | id, name, specialty, description, url, instagram |
-| OPTIONS               | id, key, value |
+| Entity | Atributes |
+| --- | --- |
+| SERVICE | id, name, description, duration, price | 
+| SERVICE GROUP | id, name, description, url, featured image, gallery* |
+| SERVICE CATEGORY | id, name, description, icon, url |
+| PROFESSIONAL | id, name, specialty, description, url, instagram |
+| SPECIALTIES | id, name
+| LIST ITEMS | id, heading, text, icon
+| OPTIONS | id, key, value |
 
 *(\*) Needs a new table*
 
 ## 2.2. Relationship
 - SERVICE *belongs to* SERVICE GROUP
 - SERVICE GROUP *belongs to* CATEGORY
-- PROFESSIONAL *performs* SERVICE
 - PROFESSIONAL *belongs to* CATEGORY
+- PROFESSIONAL *has* SPECIALTY
 
 # 3. Entity-Relationship Diagram
-![alt text](media/github/entity-relationship-diagram-1.png)
+![alt text](media/github/entity-relationship-diagram.png)
 
 # 4. Logical model
+*All tables, except the pivot tables, include standard audit columns (created_at, updated_at, created_by, updated_by).*
 
-## services
+## 4.1. services
 
-| id | service_group_id | name | description | duration_minutes | price |
+| id | group_id | name | description | duration_minutes | price |
 |---|---|---|---|---|---|
 | 1 | 1 | Corte feminino 1 | Service description... | 30 | 90.00 |
 | 2 | 1 | Corte feminino 2 | Service description... | 60 | 120.00 |
-| 3 | 1 | Corte feminino 3 | Service description... | 90 | 180.00 |
 | 4 | 4 | Tintura 1 | Service description... | 120 | 150.00 |
-| 5 | 4 | Tintura 2 | Service description... | 150 | 200.00 |
-| 6 | 4 | Tintura 3 | Service description... | 180 | 280.00 |
 | 8 | 5 | Mechas 1 | Service description... | 360 | 90.00 |
 | 9 | 5 | Mechas 2 | Service description... | 420 | 90.00 |
 
-## service_groups
+## 4.2. service_groups
 
 | id | category_id | name | description | url | featured_image |
 |---|---|---|---|---|---|
-| 1 | 1 | Corte feminino | | /{category}/corte-feminino | /media/.../corte-feminino-cover.jpeg |
-| 2 | 1 | Corte masculino | | /{category}/corte-masculino | /media/.../corte-masculino-cover.jpeg |
-| 3 | 1 | Corte infantil | | /{category}/corte-infantil | /media/.../corte-infantil-cover.jpeg |
-| 4 | 1 | Tintura | | /{category}/tintura | /media/.../tintura-cover.jpeg |
-| 5 | 1 | Loiros | | /{category}/loiros | /media/.../loiros-cover.jpeg |
+| 1 | 1 | Corte feminino | Lorem ipsum | /.../corte-feminino | /.../corte-feminino-cover.jpeg |
+| 2 | 1 | Corte masculino | Lorem ipsum | /.../corte-masculino | /.../corte-masculino-cover.jpeg |
+| 3 | 1 | Corte infantil | Lorem ipsum | /.../corte-infantil | /.../corte-infantil-cover.jpeg |
+| 4 | 1 | Tintura | Lorem ipsum | /.../tintura | /.../tintura-cover.jpeg |
+| 5 | 1 | Loiros | Lorem ipsum | /.../loiros | /.../loiros-cover.jpeg |
 
-## service_group_galleries
+## 4.3. service_group_galleries
 
-| id | service_group_id | url | alt |
+| id | group_id | url | alt |
 |---|---|---|---|
-| 1 | 1 | /media/.../corte-feminino-01.jpeg | alt description... |
-| 2 | 1 | /media/.../corte-feminino-02.jpeg | alt description... |
-| 3 | 1 | /media/.../corte-feminino-03.jpeg | alt description... |
-| 4 | 2 | /media/.../corte-masculino-01.jpeg | alt description... |
-| 5 | 2 | /media/.../corte-masculino-02.jpeg | alt description... |
-| 6 | 2 | /media/.../corte-masculino-03.jpeg | alt description... |
-| 7 | 3 | /media/.../corte-infantil-01.jpeg | alt description... |
-| 8 | 3 | /media/.../corte-infantil-02.jpeg | alt description... |
-| 9 | 4 | /media/.../tintura-01.jpeg | alt description... |
-| 10 | 5 | /media/.../loiros-01.jpeg | alt description... |
-| 11 | 5 | /media/.../loiros-02.jpeg | alt description... |
+| 1 | 1 | /.../corte-feminino-01.jpeg | Lorem ipsum... |
+| 2 | 1 | /.../corte-feminino-02.jpeg | Lorem ipsum... |
+| 4 | 2 | /.../corte-masculino-01.jpeg | Lorem ipsum... |
+| 5 | 2 | /.../corte-masculino-02.jpeg | Lorem ipsum... |
+| 7 | 3 | /.../corte-infantil-01.jpeg | Lorem ipsum... |
+| 8 | 3 | /.../corte-infantil-02.jpeg | Lorem ipsum... |
+| 9 | 4 | /.../tintura-01.jpeg | Lorem ipsum... |
+| 10 | 5 | /.../loiros-01.jpeg | Lorem ipsum... |
+| 11 | 5 | /.../loiros-02.jpeg | Lorem ipsum... |
 
-## service_categories
+## 4.4. service_categories
 
 | id | name | description | url | featured_image | icon |
 |---|---|---|---|---|---|
-| 1 | Cabelo | | /cabelo | /media/.../.cabelo-cover.jpeg | /media/.../cabelo.svg |
-| 2 | Estética | | /estetica | /media/.../estetica-cover.jpeg | /media/.../estetica.svg |
-| 3 | Unhas | | /unhas | /media/.../unhas-cover.jpeg | /media/.../unhas.svg |
+| 1 | Cabelo | Lorem ipsum | /cabelo | /.../.cabelo-cover.jpeg | /.../cabelo.svg |
+| 2 | Estética | Lorem ipsum | /estetica | /.../estetica-cover.jpeg | /.../estetica.svg |
+| 3 | Unhas | Lorem ipsum | /unhas | /.../unhas-cover.jpeg | /.../unhas.svg |
 
-## professionals
+## 4.5. professionals
 
-| id | name | specialty | description | instagram | url | featured_image |
-|---|---|---|---|---|---|---|
-| 1 | Núbia | Esteticista | | nubia | /profissionais/nubia | /media/.../nubia.jpeg |
-| 2 | Juliana | Cabeleiro(a) | | juliana | /profissionais/juliana | /media/.../juliana.jpeg |
-| 3 | Valter | Cabeleiro(a) | | valter | /profissionais/valter | /media/.../valter.jpeg |
-| 4 | Cristiane | Manicure | | cristiane | /profissionais/cristiane | /media/.../cristiane.jpeg |
-| 5 | Adriana | Cabeleiro(a) | | adriana | /profissionais/adriana | /media/.../adriana.jpeg |
+| id | name | description | instagram | url | featured_image |
+|---|---|---|---|---|---|
+| 1 | Núbia | Lorem ipsum | nubia | /.../nubia | /.../nubia.jpeg |
+| 2 | Juliana | Lorem ipsum | juliana | /.../juliana | /.../juliana.jpeg |
+| 3 | Valter | Lorem ipsum | valter | /.../valter | /.../valter.jpeg |
+| 4 | Cristiane | Lorem ipsum | cristiane | /.../cristiane | /.../cristiane.jpeg |
+| 5 | Adriana | Lorem ipsum | adriana | /.../adriana | /.../adriana.jpeg |
 
-## list_items
+## 4.6. specialties
+
+| id | name |
+|---|---|
+| 1 | Cabeleireiro |
+| 2 | Esteticista |
+| 3 | Manicure |
+
+## 4.7. professionals_specialties
+
+| professional_id | specialty_id |
+|---|---|
+| 1 | 2 |
+| 2 | 1 |
+| 3 | 1 |
+| 4 | 3 |
+| 5 | 1 |
+
+## 4.8. list_items
 
 | id | heading | text | icon | type |
 |---|---|---|---|---|
-| 1 | Feature heading 01 | Lorem ipsum dolor sit amet... | /media/.../feature-01.svg | feature |
-| 2 | Feature heading 02 | Lorem ipsum dolor sit amet... | /media/.../feature-02.svg | feature |
-| 3 | Feature heading 03 | Lorem ipsum dolor sit amet... | /media/.../feature-03.svg | feature |
-| 4 | Talking point heading 01 | Lorem ipsum dolor sit amet... | /media/.../talking-point-01.svg | talking-point |
-| 5 | Talking point heading 02 | Lorem ipsum dolor sit amet... | /media/.../talking-point-02.svg | talking-point |
-| 6 | Talking point heading 03 | Lorem ipsum dolor sit amet... | /media/.../talking-point-03.svg | talking-point |
+| 1 | Feature heading 01 | Lorem ipsum... | /.../ft-01.svg | feature |
+| 2 | Feature heading 02 | Lorem ipsum... | /.../ft-02.svg | feature |
+| 3 | Feature heading 03 | Lorem ipsum... | /.../ft-03.svg | feature |
+| 4 | Talking point heading 01 | Lorem ipsum... | /.../tp-01.svg | talking-point |
+| 5 | Talking point heading 02 | Lorem ipsum... | /.../tp-02.svg | talking-point |
+| 6 | Talking point heading 03 | Lorem ipsum... | /.../tp-03.svg | talking-point |
 
-## options
+## 4.9. options
 
 | id | key | value | updated_at | updated_by |
 |---|---|---|---|---|
@@ -104,7 +120,7 @@
 | 5 | call-to-action-text | ... | 2026-04-16 | user02 |
 | 6 | call-to-action-button | Click here | 2026-04-16 | user02 |
 
-## categories_professionals
+## 4.10. categories_professionals
 
 | category_id | professional_id |
 |---|---|
@@ -115,9 +131,121 @@
 | 2 | 1 |
 | 3 | 4 |
 
-
-# Normalization
-
 # Data dictionary
 
 # Physical model
+```sql
+/* CREATE TABLES */
+
+CREATE TABLE service_categories (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    description VARCHAR(500),
+    url VARCHAR(500) UNIQUE,
+    featured_image VARCHAR(500),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP,
+    created_by VARCHAR(50) NOT NULL,
+    updated_by VARCHAR(50)
+);
+
+CREATE TABLE service_groups (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    category_id INT,
+    name VARCHAR(50) NOT NULL,
+    description VARCHAR(500),
+    url VARCHAR(500) UNIQUE,
+    featured_image VARCHAR(500),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP,
+    created_by VARCHAR(50) NOT NULL,
+    updated_by VARCHAR(50),
+    FOREIGN KEY (category_id) REFERENCES service_categories(id)
+);
+
+CREATE TABLE service_group_galleries (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    group_id INT,
+    url VARCHAR(500) UNIQUE,
+    alt VARCHAR(500),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP,
+    created_by VARCHAR(50) NOT NULL,
+    updated_by VARCHAR(50),
+    FOREIGN KEY (group_id) REFERENCES service_groups(id)
+);
+
+CREATE TABLE services (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    group_id INT,
+    name VARCHAR(50) NOT NULL,
+    description VARCHAR(500),
+    duration_minutes INT NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP,
+    created_by VARCHAR(50) NOT NULL,
+    updated_by VARCHAR(50),
+    FOREIGN KEY (group_id) REFERENCES service_groups(id)
+);
+
+CREATE TABLE professionals (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    description VARCHAR(500),
+    instagram VARCHAR(50),
+    url VARCHAR(500) UNIQUE,
+    featured_image VARCHAR(500),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP,
+    created_by VARCHAR(50) NOT NULL,
+    updated_by VARCHAR(50)
+);
+
+CREATE TABLE categories_professionals (
+    category_id INT,
+    professional_id INT,
+    PRIMARY KEY (category_id, professional_id),
+    FOREIGN KEY (category_id) REFERENCES service_categories(id),
+    FOREIGN KEY (professional_id) REFERENCES professionals(id)
+);
+
+CREATE TABLE specialties (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP,
+    created_by VARCHAR(50) NOT NULL,
+    updated_by VARCHAR(50)
+);
+
+CREATE TABLE professionals_specialties (
+    professional_id INT,
+    specialty_id INT,
+    PRIMARY KEY (professional_id, specialty_id),
+    FOREIGN KEY (professional_id) REFERENCES professionals(id),
+    FOREIGN KEY (specialty_id) REFERENCES specialties(id)
+);
+
+CREATE TABLE list_items (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    heading VARCHAR(500) NOT NULL,
+    text VARCHAR(500),
+    icon VARCHAR(50),
+    type ENUM('features', 'talking points') NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP,
+    created_by VARCHAR(50) NOT NULL,
+    updated_by VARCHAR(50)
+);
+
+CREATE TABLE options (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    `key` VARCHAR(50) UNIQUE NOT NULL,
+    value VARCHAR(2000),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP,
+    created_by VARCHAR(50) NOT NULL,
+    updated_by VARCHAR(50)
+);
+```

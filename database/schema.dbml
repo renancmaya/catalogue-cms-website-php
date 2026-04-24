@@ -1,0 +1,116 @@
+Enum list_item_type {
+  features
+  talking_points
+}
+
+Table services {
+  id integer [primary key]
+  service_group_id integer [ref: > service_groups.id]
+  name varchar
+  description varchar
+  duration_minutes integer
+  price DECIMAL(10,2)
+  created_at timestamp
+  updated_at timestamp
+  created_by varchar
+  updated_by varchar
+}
+
+Table service_groups {
+  id integer [primary key]
+  category_id integer [ref: > service_categories.id]
+  name varchar
+  description varchar
+  url varchar [unique]
+  featured_image varchar [unique]
+  created_at timestamp
+  updated_at timestamp
+  created_by varchar
+  updated_by varchar
+}
+
+Table service_group_galleries {
+  id integer [primary key]
+  service_group_id integer [ref: > service_groups.id]
+  url varchar [unique]
+  alt varchar
+  created_at timestamp
+  updated_at timestamp
+  created_by varchar
+  updated_by varchar
+}
+
+Table service_categories {
+  id integer [primary key]
+  name varchar
+  description varchar
+  url varchar [unique]
+  featured_image varchar [unique]
+  icon varchar
+  created_at timestamp
+  updated_at timestamp
+  created_by varchar
+  updated_by varchar
+}
+
+Table professionals {
+  id integer [primary key]
+  name varchar
+  description varchar
+  instagram varchar
+  url varchar [unique]
+  featured_image varchar [unique]
+  created_at timestamp
+  updated_at timestamp
+  created_by varchar
+  updated_by varchar
+}
+
+Table specialties {
+  id integer [primary key]
+  name varchar
+  created_at timestamp
+  updated_at timestamp
+  created_by varchar
+  updated_by varchar
+}
+
+Table professionals_specialties {
+  professional_id integer [ref: > professionals.id]
+  specialty_id integer [ref: > specialties.id]
+  
+  Indexes {
+    (professional_id, specialty_id) [pk]
+  }
+}
+
+Table categories_professionals {
+  category_id integer [ref: > service_categories.id]
+  professional_id integer [ref: > professionals.id]
+  
+  Indexes {
+    (category_id, professional_id) [pk]
+  }
+}
+
+Table options {
+  id integer [primary key]
+  key varchar [unique]
+  value varchar
+  created_at timestamp
+  updated_at timestamp
+  created_by varchar
+  updated_by varchar
+}
+
+Table list_items {
+  id integer [primary key]
+  heading varchar
+  text varchar
+  icon varchar
+  type list_item_type
+  created_at timestamp
+  updated_at timestamp
+  created_by varchar
+  updated_by varchar
+}

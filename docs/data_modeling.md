@@ -12,8 +12,7 @@ The architecture handles complex relationships within the beauty industry, such 
 # 2. Entity-Relationship Diagram
 🔗 [Diagram file](../database/schema.dbml)
 
-![Entity-Relationship Diagram](docs/assets/entity-relationship-diagram.png)
-
+![Entity-Relationship Diagram](assets/entity-relationship-diagram.png)
 
 # 3. Logical Model
 *All tables, except the pivot tables, include standard audit columns (created_at, updated_at, created_by, updated_by).*
